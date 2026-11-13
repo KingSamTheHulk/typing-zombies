@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dead Letters — Type to Survive</title>
+  <meta name="description" content="A typing zombie shooter. Type the letter on each zombie to blast it with a shotgun before it reaches you." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2305070a'/%3E%3Ccircle cx='50' cy='52' r='30' fill='%238dff6b' opacity='0.15'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='52' font-weight='700' text-anchor='middle' fill='%238dff6b'%3EZ%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="stage" aria-label="Zombies approaching. Type the letter above a zombie to shoot it."></canvas>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="hud">
+    <div class="hud-top">
+      <div class="stat score">
+        <span class="label">SCORE</span>
+        <strong id="score">0</strong>
+      </div>
+      <div class="stat wave">
+        <span class="label">WAVE</span>
+        <strong id="wave">1</strong>
+      </div>
+      <div class="stat best">
+        <span class="label">BEST</span>
+        <strong id="best">0</strong>
+      </div>
+      <button class="sound" id="soundBtn" type="button" aria-label="Toggle sound" title="Toggle sound">
+        <span id="soundIcon">♪</span>
+      </button>
+    </div>
+
+    <div class="hud-bottom">
+      <div class="health" id="health" aria-label="Health"></div>
+      <div class="combo" id="combo" hidden>
+        <span>COMBO</span>
+        <strong id="comboCount">0</strong>
+      </div>
+      <div class="side-stats">
+        <span>ACC <strong id="acc">100%</strong></span>
+        <span>KILLS <strong id="kills">0</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner" id="banner" aria-live="polite"></div>
+
+  <div class="overlay" id="overlay">
+    <div class="card">
+      <section data-view="start">
+        <p class="kicker">A typing zombie shooter</p>
+        <h1>DEAD<span>LETTERS</span></h1>
+        <p class="sub">Every zombie carries a letter. Type it to put a shotgun blast through its head. They keep coming — keep typing.</p>
+        <ul class="rules">
+          <li><b>TYPE</b><span>the letter floating over a zombie to fire at it.</span></li>
+          <li><b>CHAIN</b><span>fast kills build a combo multiplier. A wrong key breaks it.</span></li>
+          <li><b>SURVIVE</b><span>endless waves. Clear one to catch your breath and heal a heart.</span></li>
+        </ul>
+        <button class="primary" id="startBtn" type="button">Start typing <span aria-hidden="true">▸</span></button>
+        <p class="hint"><kbd>Esc</kbd> pause · click ♪ for sound</p>
+      </section>
+
+      <section data-view="over" hidden>
+        <p class="kicker" id="overKicker">The dead got through</p>
+        <h1 id="overTitle">OVERRUN</h1>
+        <p class="sub" id="overSub">You held the line for a while.</p>
+        <div class="result-grid">
+          <div><span>SCORE</span><strong id="overScore">0</strong></div>
+          <div><span>WAVE</span><strong id="overWave">1</strong></div>
+          <div><span>KILLS</span><strong id="overKills">0</strong></div>
+          <div><span>ACCURACY</span><strong id="overAcc">0%</strong></div>
+        </div>
+        <p class="record" id="overRecord"></p>
+        <button class="primary" id="againBtn" type="button">Try again <span aria-hidden="true">↻</span></button>
+        <p class="hint">Press <kbd>Enter</kbd> to restart</p>
+      </section>
+
+      <section data-view="pause" hidden>
+        <p class="kicker">Safe for now</p>
+        <h1>PAUSED</h1>
+        <p class="sub">Catch your breath. They will wait — for now.</p>
+        <button class="primary" id="resumeBtn" type="button">Resume <span aria-hidden="true">▸</span></button>
+        <p class="hint"><kbd>Esc</kbd> to resume</p>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>
