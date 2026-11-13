@@ -2,6 +2,11 @@
 
 > A typing zombie shooter. Every zombie carries a letter — type it to blow the dead away with a shotgun before they reach you. Endless waves, combo scoring, no frameworks.
 
+[![Live demo](https://img.shields.io/badge/live%20demo-play-8dff6b.svg)](https://kingsamthehulk.github.io/typing-zombies/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+**▶ Play it live: [kingsamthehulk.github.io/typing-zombies](https://kingsamthehulk.github.io/typing-zombies/)**
+
 Dead Letters is a small canvas game with zero dependencies. Pieces of the horde shamble out of the dark, each marked with a letter. Hit the matching key and your survivor snaps a shotgun toward it and fires. Miss the key and you waste a shell; let a zombie get too close and it takes a heart.
 
 ## Features
@@ -33,6 +38,16 @@ npm run dev
 ```
 
 Because the game is purely static, you can also serve `public/` with any static file server.
+
+## Deployment
+
+The repo ships with [`.github/workflows/pages.yml`](.github/workflows/pages.yml), which publishes `public/` to GitHub Pages on every push to `main`.
+
+1. Go to **Settings → Pages** and set **Source** to **GitHub Actions**.
+2. Push to `main` (or run the workflow from the **Actions** tab).
+3. The game is live at **https://kingsamthehulk.github.io/typing-zombies/**.
+
+The Pages build is fully static — the best score is saved per-visitor in `localStorage`.
 
 ## How to play
 
